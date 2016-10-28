@@ -5,7 +5,7 @@ machine:
 dependencies:
   override:
     - docker build -t chitezh/meteord:base base
-    - docker build -t chitezh/meteord:latest onbuild
+    # - docker build -t chitezh/meteord:latest onbuild
     - docker build -t chitezh/meteord:devbuild devbuild
 
 test:
@@ -19,4 +19,4 @@ deployment:
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
       - docker push chitezh/meteord:base
       - docker push chitezh/meteord:devbuild
-      - docker push chitezh/meteord:latest
+      # - docker push chitezh/meteord:latest

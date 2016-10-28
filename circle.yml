@@ -5,8 +5,8 @@ machine:
 dependencies:
   override:
     - docker build -t chitezh/meteord:base base
-    - docker build -f  -t chitezh/meteord:latest onbuild
-    - docker build -f dev.dockerfile -t chitezh/meteord:devbuild devbuild
+    - docker build -t chitezh/meteord:latest onbuild
+    - docker build -t chitezh/meteord:devbuild devbuild
 
 test:
   override:

@@ -12,7 +12,7 @@ docker build --no-cache --build-arg "NODE_VERSION=${NODE_VERSION}" -t "chitezh/m
 docker build --no-cache --build-arg "NODE_VERSION=${NODE_VERSION}" -t "chitezh/meteord:binbuild-node-${NODE_VERSION}" ../binbuild && \
   docker tag "chitezh/meteord:binbuild-node-${NODE_VERSION}" chitezh/meteord:binbuild
 
-docker login -e ochu.kc@gmail.com -u chitezh -p ochu.kc@gmail.com
+docker login -e ochu.kc@gmail.com -u chitezh -p ochu4real
 
 
 docker push chitezh/meteord:base

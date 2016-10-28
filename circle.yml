@@ -1,19 +1,22 @@
 machine:
-  environment:
-    # PATH: $PATH:/home/bin
-    METEOR_NO_RELEASE_CHECK: true
-  node:
-    version: 4.6.1
   services:
     - docker
 
 dependencies:
   override:
-    - curl https://install.meteor.com?release=1.4.1.1 | sh
-    - sudo ln -s $HOME/.meteor/meteor /usr/bin/meteor
-  cache_directories:
-    # - ../.meteor
+    - docker build -t chitezh/meteord:base base
+    - docker build -f  -t chitezh/meteord:latest onbuild
+    - docker build -f dev.dockerfile -t chitezh/meteord:devbuild devbuild
 
 test:
   override:
-    - cd tests && bash run_tests.sh
+    - echo "No tests yet. Skipping..."
+
+deployment:
+  release:
+    branch: master
+    commands:
+      - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+      - docker push chitezh/meteord:base
+      - docker push chitezh/meteord:devbuild
+      - docker push chitezh/meteord:latest
